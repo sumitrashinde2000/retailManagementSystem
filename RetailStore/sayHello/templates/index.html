@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Store Management</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <script src="{{url_for('static', filename='index.js')}}"></script>
+</head>
+<body>
+    <!-- <img src="data:image/png;base64,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" alt="">
+    <br> -->
+    <!-- <form action="greet" method="post">
+        {% for message in get_flashed_messages()%}
+        <p> {{message}} </p>
+        {% endfor %}
+        <br>
+        <input type="text" name="name_input">
+        <br>
+        <input type="submit" value="GREET" id="inputGreet">
+    </form> -->
+
+    <h1>Retail Store Management</h1>
+    <table border="1" width="100%">
+        {% for product in products %}
+        <tr>               
+            <td>{{product['code']}}</td>
+            <td>{{product['name']}}</td>
+            <td>{{product['category']}}</td>
+            <td>{{product['purchaseDate']}}</td>
+            <td>{{product['expiryDate']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br> 
+    
+    <input type="submit" value="ADD" id="add">
+    <input type="submit" value="DELETE" id="delete">
+    
+    <script></script>
+
+</body>
+</html>
