@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Retail Store Management {% endblock %}</h1>
+    <br>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+              <th scope="col">Product Code</th>
+              <th scope="col">Product Name</th>
+              <th scope="col">Product Category</th>
+              <th scope="col">Purchase Date</th>
+              <th scope="col">Expiry Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>    
+                <th>
+                    <a href="{{ url_for('product', code=product['code']) }}">
+                        {{ product['code'] }}
+                    </a>
+                    <span class="badge badge-primary"></span>
+                    <a href="{{ url_for('edit', code=product['code']) }}">
+                        <span class="badge badge-info">Edit</span>
+                    </a>
+                </th>
+                <td>{{product['name']}}</td>
+                <td>{{product['category']}}</td>
+                <td>{{product['purchaseDate']}}</td>
+                <td>{{product['expiryDate']}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

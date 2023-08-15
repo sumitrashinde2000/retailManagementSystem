@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>{% block title %} {{ product['code'] }} {% endblock %}</h2>
+    <div class="shadow-lg p-3 mb-5 bg-white rounded">
+        <p>{{ product['name'] }}</p>
+        <p>{{ product['category'] }}</p>
+        <p>{{ product['purchaseDate'] }}</p>
+        <p>{{ product['expiryDate'] }}</p>
+    </div>
+    
+{% endblock %}

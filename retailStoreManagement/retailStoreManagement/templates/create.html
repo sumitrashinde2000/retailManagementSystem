@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Add new Product {% endblock %}</h1>
+<form method="post">
+    <div class="form-group">
+        <label for="code">Code:</label>
+        <input type="text" name="code" placeholder="product code" class="form-control" value="{{request.form['code']}}">
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" placeholder="product name" class="form-control" value="{{request.form['name']}}">
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category:</label>
+        <input type="text" name="category" placeholder="product category" class="form-control" value="{{request.form['category']}}">
+    </div>
+
+    <div class="form-group">
+        <label for="purchaseDate">PurchaseDate:</label>
+        <input type="date" name="purchaseDate" placeholder="product purchaseDate" class="form-control" value="{{request.form['purchaseDate']}}">
+    </div>
+
+    <div class="form-group">
+        <label for="expiryDate">ExpiryDate:</label>
+        <input type="date" name="expiryDate" placeholder="product expiryDate" class="form-control" value="{{request.form['expiryDate']}}">
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+{% endblock %}
