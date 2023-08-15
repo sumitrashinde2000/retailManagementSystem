@@ -27,18 +27,18 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# def get_code(code_id):
-#     conn = get_db_connection()
-#     product = conn.execute('SELECT * FROM products WHERE id = ?',(code_id)).fetchone()
-#     conn.close()
-#     if product is None:
-#         abort(404)
-#         return product
+def get_code(code_id):
+    conn = get_db_connection()
+    product = conn.execute('SELECT * FROM products WHERE id = ?',(code_id)).fetchone()
+    conn.close()
+    if product is None:
+        abort(404)
+        return product
     
-# @app.route('/<int:code_id>')
-# def product(code_id):
-#     product = get_code(code_id)
-#     return render_template('post.html',product=product) 
+@app.route('/<int:code_id>')
+def product(code_id):
+    product = get_code(code_id)
+    return render_template('post.html',product=product) 
 
 @app.route('/create', methods=('GET', 'POST'))
 def create():
@@ -58,5 +58,12 @@ def create():
             conn.close()     
         return render_template('create.html')
 
-
-    
+@app.route('/<int:id>/delete', methods=('POST',))
+def delete(id):
+    product = get_code(id)
+    conn = get_db_connection()
+    conn.execute('DELETE FROM products WHERE id = ?', (id,))
+    conn.commit()
+    conn.close()
+    flash('"{}" was successfully deleted!' .format(product['code'])) 
+    return redirect(url_for('index'))   
